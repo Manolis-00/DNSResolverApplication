@@ -31,12 +31,12 @@ public class OctetHelper {
         return hexStringBuilder.toString();
     }
 
-    public static String hexToString(String hex) {
+    public static String hexToString(String hex) {          //todo if the number is not even, there might be issues
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < hex.length(); i += 2) {
-            String pair = hex.substring(i, i+2);
-            int charCode = Integer.parseInt(pair, 16);
+            String pair = hex.substring(i, i+2);            //gets a pair of the hex at all times.
+            int charCode = Integer.parseInt(pair, 16); //radix = 16 for the corresponding numbering system
             stringBuilder.append((char) charCode);
         }
 
