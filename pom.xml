@@ -26,11 +26,38 @@
     <finalName>DNSResolver</finalName>
     <plugins>
       <plugin>
+        <version>3.11.0</version>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <source>8</source>
           <target>8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.14.2</version>
+        <configuration>
+          <targetClasses>
+            <param>src/main/java/dns/OctetHelper.java</param>
+            <param>src/main/java/dns/OctetReader.java</param>
+          </targetClasses>
+          <targetTests>
+            <param>src/test/java/OctetHelperTest.java</param>
+            <param>src/test/java/OctetReaderTest.java</param>
+          </targetTests>
+          <timeoutConstant>10000</timeoutConstant>
+          <mutators>
+            <mutator>DEFAULTS</mutator>
+            <mutator>STRONGER</mutator>
+          </mutators>
+          <outputFormats>
+            <value>XML</value>
+            <value>HTML</value>
+          </outputFormats>
+          <threads>1</threads>
+          <failWhenNoMutation>false</failWhenNoMutation>
         </configuration>
       </plugin>
     </plugins>

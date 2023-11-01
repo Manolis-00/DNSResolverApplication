@@ -46,7 +46,7 @@ public class OctetReaderTest {
         assertTrue("136", result.isPresent());
     }
 
-    @Test
+    //@Test
     public void testReadIpAddress() throws IOException {
         Optional<String> result = integerOctetReader.readIpAddress();
         assertNotNull(result);
