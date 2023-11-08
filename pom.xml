@@ -37,27 +37,28 @@
       <plugin>
         <groupId>org.pitest</groupId>
         <artifactId>pitest-maven</artifactId>
-        <version>1.14.2</version>
+        <version>1.15.3</version>
+
         <configuration>
           <targetClasses>
-            <param>src/main/java/dns/OctetHelper.java</param>
-            <param>src/main/java/dns/OctetReader.java</param>
+            <param>dns.OctetHelper</param>
           </targetClasses>
           <targetTests>
-            <param>src/test/java/OctetHelperTest.java</param>
-            <param>src/test/java/OctetReaderTest.java</param>
+            <param>OctetHelperTest</param>
           </targetTests>
-          <timeoutConstant>10000</timeoutConstant>
           <mutators>
-            <mutator>DEFAULTS</mutator>
-            <mutator>STRONGER</mutator>
+            <!--<mutator>STRONGER</mutator>-->
+            <mutator>CONDITIONALS_BOUNDARY</mutator>
+            <mutator>NEGATE_CONDITIONALS</mutator>
+            <!--<mutator>ALL</mutator>-->
           </mutators>
           <outputFormats>
             <value>XML</value>
             <value>HTML</value>
           </outputFormats>
           <threads>1</threads>
-          <failWhenNoMutation>false</failWhenNoMutation>
+          <failWhenNoMutation>true</failWhenNoMutation>
+          <timeoutConstant>10000</timeoutConstant>
         </configuration>
       </plugin>
     </plugins>
